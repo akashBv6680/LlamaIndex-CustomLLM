@@ -1,4 +1,4 @@
-"""Configuration module for LlamaIndex Custom LLM application."""
+"""Configuration module for LlamaIndex Custom LLM application with Gemini API."""
 import os
 from dotenv import load_dotenv
 from typing import Optional
@@ -10,26 +10,34 @@ class Settings:
     """Application settings and configuration."""
 
     # API Keys
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
-    PINECONE_API_KEY: str = os.getenv("PINECONE_API_KEY", "")
-    PINECONE_ENVIRONMENT: str = os.getenv("PINECONE_ENVIRONMENT", "")
-
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    
     # Model Configuration
-    MODEL_NAME: str = "gpt-3.5-turbo"
-    EMBEDDING_MODEL: str = "text-embedding-ada-002"
+    MODEL_NAME: str = "gemini-pro"
+    EMBEDDING_MODEL: str = "models/embedding-001"
     TEMPERATURE: float = 0.7
     MAX_TOKENS: int = 500
-
-    # Vector Store
-    PINECONE_INDEX_NAME: str = "llamaindex-custom-llm"
-    VECTOR_STORE_DIMENSION: int = 1536  # Ada embedding dimension
+    TOP_P: float = 0.95
+    TOP_K: int = 40
 
     # Application Settings
-    APP_NAME: str = "LlamaIndex Custom LLM"
+    APP_NAME: str = "LlamaIndex Custom LLM with Gemini"
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
     CHUNK_SIZE: int = 1024
     CHUNK_OVERLAP: int = 20
-    TOP_K: int = 3
+    RETRIEVAL_TOP_K: int = 3
+    
+    # Gemini-specific settings
+    SAFETY_SETTINGS: list = [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_MEDIUM_AND_ABOVE",
+        },
+    ]
 
 
 settings = Settings()
