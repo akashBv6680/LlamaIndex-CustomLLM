@@ -1,14 +1,8 @@
-# LlamaIndex Custom LLM with Google Gemini - Dependencies
-llama-index==0.9.48
-llama-index-core==0.1.1
+# LlamaIndex Custom LLM with Google Gemini - Streamlit Cloud Compatible
+llama-index==0.10.0
 llama-index-embeddings-gemini==0.1.0
-llama-index-llms-gemini==0.1.1
+llama-index-llms-gemini==0.1.0
 google-generativeai==0.3.0
-streamlit==1.28.1
+streamlit==1.30.0
 python-dotenv==1.0.0
 pydantic==2.5.0
-typing-extensions==4.8.0
-python-multipart==0.0.6
-requests==2.31.0
-markdown==3.5.1
-pygments==2.16.1
